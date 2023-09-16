@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import styled, { keyframes, css } from 'styled-components';
 import img1 from '../assets/social-3.png'
 import img2 from '../assets/Search.png'
-import img3 from '../assets/logo1.png'
+import img3 from '../assets/logo.png'
 import {
   AppBar,
   Toolbar,
@@ -166,7 +166,7 @@ const Navbar = () => {
                   <a class="nav-link" href="/services">About</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="contact">Contact</a>
+                  <a class="nav-link" href="/contact">Contact</a>
                 </li>
                 {/* <li class="nav-item">
                   <a class="nav-link" href="#">FAQ</a>
@@ -176,7 +176,13 @@ const Navbar = () => {
                 <ul className='right-nav'>
                   {/* <li><a><img className='img-1-width' src={img1} />ENG</a></li>
                   <li><a><img className='img-2-width' src={img2} /></a></li> */}
+                  {loggedIn ? (
+                    <li class="nav-item">
+                      <a class="nav-link" onClick={handleLogout} style={{ color: '#000 !important' }}>Logout</a>
+                    </li>
+                  ) :(
                   <li><button className='doc-login'> <a class="nav-link" href="/doctorlogin">Doctor Login</a></button></li>
+                )}
                 </ul>
               </form>
             </div>

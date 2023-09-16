@@ -172,21 +172,7 @@ const Main = () => {
                   {errorMessage && (
                     <StyledErrorMessage>{errorMessage}</StyledErrorMessage>
                   )}
-                    <div className="more">
-                      <p className="more-p">Choose Treatment Type:</p>
-                      {checkboxOptions.map((option) => (
-                        <Button
-                          className="type-button"
-                          type={option.checked ? "primary" : "default"}
-                          onClick={() => handleButtonClick(option.value)}
-                          style={handleButtonStyle(option.value)}
-                          key={option.value}
-                        >
-                          {option.label}
-                        </Button>
-                      ))}
-                    </div>
-                    <ul className="banner-ul">
+                  <ul className="banner-ul">
                       <li>
                         <img src={imgCombined} className="vec-1" alt="" />
                         <AutoComplete
@@ -216,6 +202,21 @@ const Main = () => {
                         <button className="serch search-button" htmlType="submit" >Search</button>
                       </li>
                     </ul>
+                    <div className="more">
+                      <p className="more-p">Choose Treatment Type:</p>
+                      {checkboxOptions.map((option) => (
+                        <Button
+                          className="type-button active"
+                          type={option.checked ? "primary" : "default"}
+                          onClick={() => handleButtonClick(option.value)}
+                          style={handleButtonStyle(option.value)}
+                          key={option.value}
+                        >
+                          {option.label}
+                        </Button>
+                      ))}
+                    </div>
+                    
 
                   </Form>
                 </div>
@@ -328,7 +329,7 @@ const Main = () => {
                 <div class="service-top">
 
                   <p class="service-2">Frequently asked questions</p>
-                  <p>Everything you need to know about the product and billing.</p>
+                  <p class="service-3">Everything you need to know about the product and billing.</p>
 
                   <Faq questions={questions}/>
 
