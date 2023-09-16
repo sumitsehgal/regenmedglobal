@@ -172,6 +172,20 @@ const Main = () => {
                   {errorMessage && (
                     <StyledErrorMessage>{errorMessage}</StyledErrorMessage>
                   )}
+                  <div className="more">
+                      <p className="more-p">Choose Treatment Type:</p>
+                      {checkboxOptions.map((option) => (
+                        <Button
+                          className="type-button active"
+                          type={option.checked ? "primary" : "default"}
+                          onClick={() => handleButtonClick(option.value)}
+                          style={handleButtonStyle(option.value)}
+                          key={option.value}
+                        >
+                          {option.label}
+                        </Button>
+                      ))}
+                    </div>
                   <ul className="banner-ul">
                       <li>
                         <img src={imgCombined} className="vec-1" alt="" />
@@ -202,20 +216,7 @@ const Main = () => {
                         <button className="serch search-button" htmlType="submit" >Search</button>
                       </li>
                     </ul>
-                    <div className="more">
-                      <p className="more-p">Choose Treatment Type:</p>
-                      {checkboxOptions.map((option) => (
-                        <Button
-                          className="type-button active"
-                          type={option.checked ? "primary" : "default"}
-                          onClick={() => handleButtonClick(option.value)}
-                          style={handleButtonStyle(option.value)}
-                          key={option.value}
-                        >
-                          {option.label}
-                        </Button>
-                      ))}
-                    </div>
+                    
                     
 
                   </Form>
