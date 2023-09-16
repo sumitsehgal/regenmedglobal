@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import Main from './pages/Main'
@@ -11,7 +11,7 @@ import DoctorLogin from './pages/DoctorLogin'
 import Register from './pages/Register'
 import Logout from './pages/Logout'
 import Claim from './pages/Claim'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import AuthProvider from './AuthContext'
 import ResetPassword from './pages/ResetPassword'
 import Home from './pages/Home'
@@ -19,9 +19,35 @@ import Footer from './components/Footer'
 import "@fontsource/poppins";
 
 function App () {
+
+  const routeLocation = useLocation();
+  const [className, setClassName] = useState("");
+
+  useEffect(() => {
+    const pathname = routeLocation.pathname;
+
+    switch (pathname) {
+      case "/":
+        setClassName("page-home");
+        break;
+      case "/about":
+        setClassName("page-about");
+        break;
+      case "/contact":
+        setClassName("page-contact");
+        break;
+      case "/results":
+          setClassName("page-results");
+          break;
+      default:
+        setClassName("");
+    }
+  }, [routeLocation]);
+
+
   return (
     <AuthProvider>
-        <div className='App'>
+        <div className={`App ${className}`}>
           <Navbar />
           <Routes>
             <Route path='/' element={<Main />} />
