@@ -1627,7 +1627,7 @@ margin-left: 0;
   align-items: center;
   position: relative;
   justify-content: center;
-  padding: 60px 0;
+  padding: 160px 0 60px 0;
   z-index: 99;
   overflow: hidden;
 }
@@ -1772,7 +1772,7 @@ ul.banner-ul .ant-select:focus {
   margin: 0 15px 0 0 !important;
 }
 
-.banner-bottom .more button:hover,.banner-bottom .more button.active {
+.banner-bottom .more button.active {
   border-radius: 12px;
   border: 1px solid #E409E8;
   background: linear-gradient(180deg, #0019FB 0%, #E409E8 100%);
@@ -1787,7 +1787,7 @@ ul.banner-ul .ant-select:focus {
   top: 50%;
   transform: translateY(-50%);
 }
-.css-11b3ww9-MuiPaper-root-MuiAppBar-root {
+.page-home .css-11b3ww9-MuiPaper-root-MuiAppBar-root {
   position: absolute !important;
   box-shadow: none !important;
   background: transparent !important;
@@ -2129,3 +2129,111 @@ p.span-clr {
 
 
 
+
+
+
+
+
+
+
+
+.form-all.register-form .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  height: 50px;
+  line-height: 50px !important;
+  padding: 0 15px!important;
+}
+.form-all.register-form .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+  width: 100% !important;
+}
+.form-all.register-form {
+  padding: 0;
+}
+.form-all.register-form .ant-select-selector {
+  border-radius: 4px !important;
+  border: 1px solid #a1a1a1 !important;
+  background: #FFF !important;
+  height: 50px !important;
+}
+.form-all.register-form .ant-select {
+  width: 100% !important;
+  text-align: left;
+  height: 50px !important;
+  margin: 0 !important;
+}
+.form-all.register-form .label-contact{
+  color: #000;
+}
+
+.form-all.register-form .css-wb57ya-MuiFormControl-root-MuiTextField-root {
+  width: 100% !important;
+}
+
+.form-all.register-form .mar-15 p {
+  display: block;
+  text-align: left;
+  font-size: 14px;}
+.flexmen{
+  display: flex;
+}
+.flexmen button{
+  color: #FFF;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: none;
+  height: 35px;
+  display: block;
+  line-height: 35px;
+  border: 1px solid transparent;
+  padding: 0 15px;
+  border-radius: 12px;
+  border: 1px solid #E409E8;
+  background: linear-gradient(180deg, #0019FB 0%, #E409E8 100%);
+  margin: 0 15px 0 0;
+}
+/* .form-all.register-form .sc-cuTEes.MDteb {
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+}
+
+.form-all.register-form .MuiFormControl-root {
+    width: 100% !important;
+}
+
+.form-all.register-form .ant-select {
+    width: 100% !important;
+}
+
+.form-all.register-form .ant-select-selector {
+    background: transparent !important;
+    border: none !important;
+    color: #fff !important;
+}
+
+.form-all.register-form span.ant-select-selection-placeholder {
+    color: #fff !important;
+    display: block !important;
+    text-align: left;
+}
+
+.form-all.register-form .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+    color: #fff;
+    border: none !important;
+}
+
+.form-all.register-form .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root {
+    color: #fff;
+}
+
+.form-all.register-form .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+    color: #fff;
+}
+
+.form-all.register-form .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+    border: none !important;
+    color: #fff !important;
+} */

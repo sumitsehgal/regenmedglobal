@@ -18,7 +18,7 @@ import Home from './pages/Home'
 import Footer from './components/Footer'
 import "@fontsource/poppins";
 
-function App () {
+function App() {
 
   const routeLocation = useLocation();
   const [className, setClassName] = useState("");
@@ -30,6 +30,12 @@ function App () {
       case "/":
         setClassName("page-home");
         break;
+      case "/home":
+        setClassName("page-home");
+        break;
+      case "/register":
+        setClassName("page-home");
+        break;
       case "/about":
         setClassName("page-about");
         break;
@@ -37,8 +43,8 @@ function App () {
         setClassName("page-contact");
         break;
       case "/results":
-          setClassName("page-results");
-          break;
+        setClassName("page-results");
+        break;
       default:
         setClassName("");
     }
@@ -47,23 +53,23 @@ function App () {
 
   return (
     <AuthProvider>
-        <div className={`App ${className}`}>
-          <Navbar />
-          <Routes>
-            <Route path='/' element={<Main />} />
-            <Route path='/Services' element={<Services />} />
-            <Route path='/home' element={<Main />} />
-            <Route path='/Contact' element={<Contact />} />
-            <Route path='/Results' element={<Results />} />
-            <Route path='/DoctorLogin' element={<DoctorLogin />} />
-            <Route path='/Logout' element={<Logout />} />
-            <Route path='/Register' element={<Register />} />
-            <Route path='/profile/:userId' element={<Profile />} />
-            <Route path='/claim' element={<Claim />} />
-            <Route path='/ResetPassword' element={<ResetPassword />} />
-          </Routes>
-          <Footer />
-        </div>
+      <div className={`App ${className}`}>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Main />} />
+          <Route path='/Services' element={<Services />} />
+          <Route path='/home' element={<Main />} />
+          <Route path='/Contact' element={<Contact />} />
+          <Route path='/Results' element={<Results />} />
+          <Route path='/DoctorLogin' element={<DoctorLogin />} />
+          <Route path='/Logout' element={<Logout />} />
+          <Route path='/Register' element={<Register />} />
+          <Route path='/profile/:userId' element={<Profile />} />
+          <Route path='/claim' element={<Claim />} />
+          <Route path='/ResetPassword' element={<ResetPassword />} />
+        </Routes>
+        <Footer />
+      </div>
     </AuthProvider>
 
   )

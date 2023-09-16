@@ -283,7 +283,7 @@ const Register = () => {
                               render={({ field }) => (
                                 <TextField
                                   label="Clinic Name"
-                                  className="input-contact"
+                                 
                                   variant="outlined"
                                   style={{ width: "25rem" }}
                                   error={Boolean(errors.clinicName)}
@@ -365,7 +365,7 @@ const Register = () => {
                                     <Select
                                       mode="tags"
                                       label="Conditions"
-                                      className="input-contact"
+                                     
                                       ref={conditionRef}
                                       open={showConditionsDropdown}
                                       style={{ width: "25rem", marginTop: "1rem" }}
@@ -397,7 +397,7 @@ const Register = () => {
                                   <div>
                                     <Select
                                       mode="multiple"
-                                      className="input-contact"
+                                     
                                       open={false}
                                       style={{ width: "25rem", marginTop: "1rem" }}
                                       placeholder="Conditions/Diseases treated"
@@ -426,7 +426,7 @@ const Register = () => {
                                 render={({ field }) => (
                                   <div>
 
-                                    <div>
+                                    <div className="flexmen">
                                       <Button
                                         variant={
                                           field.value.includes("PRP") ? "contained" : "outlined"
@@ -495,7 +495,7 @@ const Register = () => {
                                 render={({ field }) => (
                                   <TextField
                                     label="Address"
-                                    className="input-contact"
+                                   
                                     variant="outlined"
                                     style={{ width: "25rem" }}
                                     error={Boolean(errors.address)}
@@ -525,7 +525,7 @@ const Register = () => {
                                 render={({ field }) => (
                                   <TextField
                                     label="Country"
-                                    className="input-contact"
+                                   
                                     variant="outlined"
                                     style={{ width: "25rem" }}
                                     error={Boolean(errors.country)}
@@ -580,7 +580,7 @@ const Register = () => {
                                 render={({ field }) => (
                                   <TextField
                                     label="State"
-                                    className="input-contact"
+                                   
                                     variant="outlined"
                                     style={{ width: "25rem" }}
                                     error={Boolean(errors.state)}
@@ -617,7 +617,7 @@ const Register = () => {
                             <StyledControllerContainer>
                               <Controller
                                 name="city"
-                                className="input-contact"
+                               
                                 control={control}
                                 defaultValue=""
                                 rules={{ required: "City is required" }}
@@ -661,7 +661,7 @@ const Register = () => {
                                 render={({ field }) => (
                                   <TextField
                                     label="Phone"
-                                    className="input-contact"
+                                   
                                     variant="outlined"
                                     style={{ width: "25rem" }}
                                     error={Boolean(errors.phone)}
@@ -688,7 +688,7 @@ const Register = () => {
                                 render={({ field }) => (
                                   <TextField
                                     label="Website"
-                                    className="input-contact"
+                                   
                                     variant="outlined"
                                     style={{ width: "25rem" }}
                                     rules={{
@@ -771,7 +771,7 @@ const Register = () => {
                                 render={({ field }) => (
                                   <TextField
                                     label="Password"
-                                    className="input-contact"
+                                   
                                     variant="outlined"
                                     style={{ width: "25rem" }}
                                     error={Boolean(errors.password)}
@@ -811,7 +811,7 @@ const Register = () => {
                                 render={({ field }) => (
                                   <TextField
                                     label="Confirm Password"
-                                    className="input-contact"
+                                   
                                     variant="outlined"
                                     style={{ width: "25rem" }}
                                     fullWidth
