@@ -17,8 +17,7 @@ const Faq = ({ questions }) => {
           <button className="bt-my" onClick={() => handleToggle(index)}>
             {question.question}
             <div className="fax-icon">
-              <img className="faq-both faq-plus" src={plus} alt="" />
-              <img className="faq-both faq-minus" src={minus} alt="" />
+            {activeIndex === index ? <img className="faq-both faq-minus" src={minus} alt="" /> : <img className="faq-both faq-plus" src={plus} alt="" /> }
             </div>
           </button>
           <Collapse isOpened={activeIndex === index}>

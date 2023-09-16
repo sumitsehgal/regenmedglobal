@@ -206,7 +206,7 @@ const Main = () => {
                       <p className="more-p">Choose Treatment Type:</p>
                       {checkboxOptions.map((option) => (
                         <Button
-                          className="type-button active"
+                          className={option.checked ? "type-button active" : "type-button"}
                           type={option.checked ? "primary" : "default"}
                           onClick={() => handleButtonClick(option.value)}
                           style={handleButtonStyle(option.value)}
