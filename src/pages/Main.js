@@ -16,6 +16,7 @@ import imgEli1 from "../assets/eli.png"
 import imgEli2 from "../assets/eli-2.png"
 import imgEli3 from "../assets/eli-3.png"
 import Faq from "../components/Faq";
+import ContactForm from "../components/ContactForm";
 
 
 const questions = [
@@ -153,14 +154,6 @@ const Main = () => {
     return option.checked
       ? { color: "white", backgroundColor: "var(--main-color)" }
       : {};
-  };
-
-  const handleSuggestionClick = (suggestion, event) => {
-    event.stopPropagation(); // Stop event propagation
-
-    const filterTerm = suggestion.value.toString(); // Convert to string
-    setSearchTerm(filterTerm.toLowerCase());
-    console.log(`search term: ${searchTerm}`);
   };
 
   console.log("Render options:", options);
@@ -316,60 +309,7 @@ const Main = () => {
           <div class="row">
             <div class="col-lg-6">
               <div class="left-contact">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="mar-15">
-                      <p class="Get-p">Get in touch</p>
-                      <p class="Get-p-1">Our friendly team would love to hear from you.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="mar-15">
-                      <label for="" class="label-contact">First name</label>
-                      <input type="text" class="input-contact" placeholder="First Name" />
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mar-15">
-                      <label for="" class="label-contact">Last name</label>
-                      <input type="text" class="input-contact" placeholder="Last Name" />
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="mar-15">
-                      <label for="" class="label-contact">Email</label>
-                      <input type="text" class="input-contact" placeholder="Email" />
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                    <div class="mar-15">
-                      <label for="" class="label-contact">Phone Number</label>
-                      <input type="text" class="input-contact" placeholder="Phone Number" />
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                    <div class="mar-15">
-                      <label for="" class="label-contact">Message</label>
-                      <textarea class="input-contact input-area"></textarea>
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                    <div class="mar-15">
-                      <div class="flex-input">
-                        <input type="checkbox" /> <label for="">You agree to our friendly privacy policy.</label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                    <div class="mar-no">
-                      <button class="Send-message">Send message</button>
-                    </div>
-                  </div>
-                </div>
+                <ContactForm />
               </div>
             </div>
             <div class="col-lg-6">
