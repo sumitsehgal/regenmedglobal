@@ -16,6 +16,7 @@ import AuthProvider from './AuthContext'
 import ResetPassword from './pages/ResetPassword'
 import Home from './pages/Home'
 import Footer from './components/Footer'
+import "@fontsource/poppins";
 
 function App () {
   return (

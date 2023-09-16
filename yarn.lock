@@ -2755,6 +2755,11 @@
     "aria-hidden" "^1.2.3"
     "tabbable" "^6.0.1"
 
+"@fontsource/poppins@^5.0.8":
+  "integrity" "sha512-P8owfYWluoUY5Nyzk4gT/L6LmLmseP6ezFWhj6VBUa5pRIdnCvNJpoQ6i/vhekjtJOfqX6nKlB+LCttoUl2GQQ=="
+  "resolved" "https://registry.npmjs.org/@fontsource/poppins/-/poppins-5.0.8.tgz"
+  "version" "5.0.8"
+
 "@fortawesome/fontawesome-common-types@^0.1.7":
   "integrity" "sha512-ego8jRVSHfq/iq4KRZJKQeUAdi3ZjGNrqw4oPN3fNdvTBnLCSntwVCnc37bsAJP9UB8MhrTfPnZYxkv2vpS4pg=="
   "resolved" "https://registry.npmjs.org/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.1.7.tgz"
