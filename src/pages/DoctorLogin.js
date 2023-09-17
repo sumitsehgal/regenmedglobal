@@ -54,6 +54,7 @@ const DoctorLogin = () => {
   const { login } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
+    console.log("Endter")
     e.preventDefault();
 
     try {

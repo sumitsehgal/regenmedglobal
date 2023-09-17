@@ -173,7 +173,7 @@ const Main = () => {
                     <StyledErrorMessage>{errorMessage}</StyledErrorMessage>
                   )}
                   <div className="more">
-                      <p className="more-p">Choose Treatment Type:</p>
+                      <p className="more-p">Choose Treatment Type(s):</p>
                       {checkboxOptions.map((option) => (
                         <Button
                           className={option.checked ? "type-button active" : "type-button"}
@@ -213,7 +213,7 @@ const Main = () => {
                       </li>
 
                       <li>
-                        <button className="serch search-button" htmlType="submit" >Search</button>
+                        <button className="serch search-button" htmltype="submit" >Search</button>
                       </li>
                     </ul>
                     
@@ -227,29 +227,25 @@ const Main = () => {
               <div className="banner-right">
                 <img className="pro-img-3" src={imgPro2} alt="" />
                 <img className="pro-img-2" src={imgPro1} alt="" />
-                <div className="card-custom">
-                  <img className="pro-img-1" src={imgPro2} alt="" />
-                  <p className="card-p"><span>10k+</span> Happy Patients</p>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="Regenerative">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="Regenerative-left">
-                <img src={imgPro3} class="reg-img" alt="" />
+      <div className="Regenerative">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-6">
+              <div className="Regenerative-left">
+                <img src={imgPro3} className="reg-img" alt="" />
               </div>
             </div>
-            <div class="col-lg-6">
-              <div class="Regenerative-right">
-                <p class="Regenerative-p">What is Regenerative Medicine?</p>
-                <p class="Regenerative-p1">The process of repairing or regenerating human cells, tissues, or organs as a result of disease, aging, or defects. </p>
-                <button class="Regenerative-button">Explore Now</button>
+            <div className="col-lg-6">
+              <div className="Regenerative-right">
+                <p className="Regenerative-p">What is Regenerative Medicine?</p>
+                <p className="Regenerative-p1">The process of repairing or regenerating human cells, tissues, or organs as a result of disease, aging, or defects. </p>
+                <button className="Regenerative-button">Explore Now</button>
               </div>
             </div>
           </div>
@@ -257,37 +253,37 @@ const Main = () => {
       </div>
 
 
-      <div class="our-services">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="service-top">
-                <p class="service-1">Our Services To You</p>
-                <p class="service-2">What you can find here</p>
-                <p class="service-3">Find a Regenerative Medicine Doctor that offers the types of treatments below:</p>
+      <div className="our-services">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="service-top">
+                <p className="service-1">Our Services To You</p>
+                <p className="service-2">What you can find here</p>
+                <p className="service-3">Find a Regenerative Medicine Doctor that offers the types of treatments below:</p>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="common-service">
-                <img src={imgEli3} class="eli-img" alt="" />
-                <p class="stem-p">Stem Cell Therapy</p>
-                <p class="stem-p1">Stem cell therapy is a form of regenerative medicine designed to repair damaged cells within the body by reducing inflammation and modulating the immune system.</p>
+          <div className="row">
+            <div className="col-lg-4">
+              <div className="common-service">
+                <img src={imgEli3} className="eli-img" alt="" />
+                <p className="stem-p">Stem Cell Therapy</p>
+                <p className="stem-p1">Stem cell therapy is a form of regenerative medicine designed to repair damaged cells within the body by reducing inflammation and modulating the immune system.</p>
               </div>
             </div>
-            <div class="col-lg-4">
-              <div class="common-service">
-                <img src={imgEli2} class="eli-img" alt="" />
-                <p class="stem-p">PRP / Platelet Rich Plasma</p>
-                <p class="stem-p1">Platelet-rich plasma (PRP) therapy uses injections of a concentration of a patient’s own platelets to accelerate the healing of injured tendons, ligaments, muscles and joints.</p>
+            <div className="col-lg-4">
+              <div className="common-service">
+                <img src={imgEli2} className="eli-img" alt="" />
+                <p className="stem-p">PRP / Platelet Rich Plasma</p>
+                <p className="stem-p1">Platelet-rich plasma (PRP) therapy uses injections of a concentration of a patient’s own platelets to accelerate the healing of injured tendons, ligaments, muscles and joints.</p>
               </div>
             </div>
-            <div class="col-lg-4">
-              <div class="common-service">
-                <img src={imgEli1} class="eli-img" alt="" />
-                <p class="stem-p">Prolotherapy</p>
-                <p class="stem-p1">Prolotherapy is a non-surgical injection procedure used to relieve back pain by treating connective tissue injuries (ligaments and tendons) of the musculoskeletal system that have not healed by either rest or conservative therapy in order to relieve back pain.</p>
+            <div className="col-lg-4">
+              <div className="common-service">
+                <img src={imgEli1} className="eli-img" alt="" />
+                <p className="stem-p">Prolotherapy</p>
+                <p className="stem-p1">Prolotherapy is a non-surgical injection procedure used to relieve back pain by treating connective tissue injuries (ligaments and tendons) of the musculoskeletal system that have not healed by either rest or conservative therapy in order to relieve back pain.</p>
               </div>
             </div>
           </div>
@@ -297,40 +293,40 @@ const Main = () => {
 
 
 
-      <div class="contact-custom">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="service-top">
+      <div className="contact-custom">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="service-top">
 
-                <p class="service-2">Contact us</p>
+                <p className="service-2">Contact us</p>
 
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="left-contact">
+          <div className="row">
+            <div className="col-lg-6">
+              <div className="left-contact">
                 <ContactForm />
               </div>
             </div>
-            <div class="col-lg-6">
-              <div class="right-contact">
-                <img src={imgPro4} class="pro-44" alt="" />
+            <div className="col-lg-6">
+              <div className="right-contact">
+                <img src={imgPro4} className="pro-44" alt="" />
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="faq">
-        <div class="container">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="service-top">
+      <div className="faq">
+        <div className="container">
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="service-top">
 
-                  <p class="service-2">Frequently asked questions</p>
-                  <p class="service-3">Everything you need to know about the product and billing.</p>
+                  <p className="service-2">Frequently asked questions</p>
+                  <p className="service-3">Everything you need to know about the product and billing.</p>
 
                   <Faq questions={questions}/>
 

@@ -140,7 +140,7 @@ const ResetPassword = () => {
             <p className='error-message'>{errors.confirmPassword.message}</p>
           )}
         </div>
-        <Button className='btn-login' type='primary' htmlType='submit'>
+        <Button className='btn-login' type='primary' htmltype='submit'>
           Reset Password
         </Button>
         {resetRequested && (

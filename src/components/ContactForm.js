@@ -17,56 +17,56 @@ const ContactForm = () => {
             onFinishFailed={onFinishFailed}
         >
             <Row>
-                <div class="col-lg-12">
-                    <div class="mar-15">
-                        <p class="Get-p">Get in touch</p>
-                        <p class="Get-p-1">Our friendly team would love to hear from you.</p>
+                <div className="col-lg-12">
+                    <div className="mar-15">
+                        <p className="Get-p">Get in touch</p>
+                        <p className="Get-p-1">Our friendly team would love to hear from you.</p>
                     </div>
                 </div>
             </Row>
             <Row>
-                <div class="col-lg-6">
-                    <div class="mar-15">
-                        <label for="" class="label-contact">First name</label>
-                        <input type="text" class="input-contact" placeholder="First Name" required />
+                <div className="col-lg-6">
+                    <div className="mar-15">
+                        <label htmlFor="" className="label-contact">First name</label>
+                        <input type="text" className="input-contact" placeholder="First Name" required />
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="mar-15">
-                        <label for="" class="label-contact">Last name</label>
-                        <input type="text" class="input-contact" placeholder="Last Name" required />
+                <div className="col-lg-6">
+                    <div className="mar-15">
+                        <label htmlFor="" className="label-contact">Last name</label>
+                        <input type="text" className="input-contact" placeholder="Last Name" required />
                     </div>
                 </div>
             </Row>
             <Row>
-                <div class="col-lg-12">
-                    <div class="mar-15">
-                        <label for="" class="label-contact">Email</label>
-                        <input type="text" class="input-contact" placeholder="Email" />
+                <div className="col-lg-12">
+                    <div className="mar-15">
+                        <label htmlFor="" className="label-contact">Email</label>
+                        <input type="text" className="input-contact" placeholder="Email" />
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <div class="mar-15">
-                        <label for="" class="label-contact">Phone Number</label>
-                        <input type="text" class="input-contact" placeholder="Phone Number" />
+                <div className="col-lg-12">
+                    <div className="mar-15">
+                        <label htmlFor="" className="label-contact">Phone Number</label>
+                        <input type="text" className="input-contact" placeholder="Phone Number" />
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <div class="mar-15">
-                        <label for="" class="label-contact">Message</label>
-                        <textarea class="input-contact input-area"></textarea>
+                <div className="col-lg-12">
+                    <div className="mar-15">
+                        <label htmlFor="" className="label-contact">Message</label>
+                        <textarea className="input-contact input-area"></textarea>
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <div class="mar-15">
-                        <div class="flex-input">
-                            <input type="checkbox" /> <label for="">You agree to our friendly privacy policy.</label>
+                <div className="col-lg-12">
+                    <div className="mar-15">
+                        <div className="flex-input">
+                            <input type="checkbox" /> <label htmlFor="">You agree to our friendly privacy policy.</label>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <div class="mar-no">
-                        <button type='submit' class="Send-message">Send message</button>
+                <div className="col-lg-12">
+                    <div className="mar-no">
+                        <button type='submit' className="Send-message">Send message</button>
                     </div>
                 </div>
             </Row>

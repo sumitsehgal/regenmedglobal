@@ -113,7 +113,7 @@ const Register = () => {
   };
 
   const goToNext = () => {
-    if(email != "")
+    if (email != "")
       setIsEmailExisted(false)
     else
       toast.error("Email Required.");
@@ -274,7 +274,9 @@ const Register = () => {
                     <div className="row">
                       <div className="col-lg-12">
                         <div className="mar-15">
+
                           <StyledControllerContainer>
+                            <label className="label-contact">Clinic Name</label>
                             <Controller
                               name="clinicName"
                               control={control}
@@ -282,8 +284,7 @@ const Register = () => {
                               rules={{ required: "Clinic Name is required" }}
                               render={({ field }) => (
                                 <TextField
-                                  label="Clinic Name"
-                                 
+
                                   variant="outlined"
                                   style={{ width: "25rem" }}
                                   error={Boolean(errors.clinicName)}
@@ -308,6 +309,7 @@ const Register = () => {
                         <div className="mar-15">
 
                           <StyledControllerContainer>
+                            <label className="label-contact">Email</label>
                             <Controller
                               name="email"
                               control={control}
@@ -322,7 +324,6 @@ const Register = () => {
                               render={({ field }) => (
                                 <>
                                   <TextField
-                                    label="Email"
                                     value={email}
                                     className="input-text"
                                     variant="outlined"
@@ -344,377 +345,493 @@ const Register = () => {
                         </div>
                       </div>
                     </div>
-                    {isEmailExisted && 
-                    <button type="button" onClick={goToNext} className="Send-message">Next</button> }
+                    {isEmailExisted &&
+                      <button type="button" onClick={goToNext} className="Send-message">Next</button>}
 
                     {!isEmailExisted &&
-                    <div className="other-fields" >
-                      <div className="row">
-                        <div className="col-lg-12">
-                          <div className="mar-15">
-                            {/* <label for="" className="label-contact"></label> */}
-                            <StyledControllerContainer
-                              onMouseEnter={() => setShowConditionsDropdown(true)}
-                              onMouseLeave={() => setShowConditionsDropdown(false)}
-                            >
-                              <Controller
-                                name="conditionsSuggestions"
-                                control={control}
-                                render={({ field }) => (
-                                  <div>
-                                    <Select
-                                      mode="tags"
-                                      label="Conditions"
-                                     
-                                      ref={conditionRef}
-                                      open={showConditionsDropdown}
-                                      style={{ width: "25rem", marginTop: "1rem" }}
-                                      placeholder="Select Your Conditions/Diseases treated"
+                      <div className="other-fields" >
+
+                        <div className="row">
+                          <div className="col-lg-12">
+                            <div className="mar-15">
+
+                              <StyledControllerContainer>
+                                <label className="label-contact">Password</label>
+                                <Controller
+                                  name="password"
+                                  control={control}
+                                  defaultValue=""
+                                  rules={{
+                                    required: "Password is required",
+                                    validate: {
+                                      strongEnough: (value) =>
+                                        isPasswordStrongEnough(value) ||
+                                        'Password must be at least "Fair" strength',
+                                    },
+                                  }}
+                                  render={({ field }) => (
+                                    <TextField
+                                      variant="outlined"
+                                      style={{ width: "25rem" }}
+                                      error={Boolean(errors.password)}
+                                      helperText={errors.password ? errors.password.message : ""}
+                                      {...field}
+                                      type="password"
+                                      onChange={(e) => {
+                                        field.onChange(e);
+                                        console.log("Password values:", e.target.value);
+                                      }}
+                                    />
+                                  )}
+                                />
+                                <p>Password Strength: {getPasswordStrength()}</p>
+                              </StyledControllerContainer>
+
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="row">
+                          <div className="col-lg-12">
+                            <div className="mar-15">
+
+                              <StyledControllerContainer>
+                                <label className="label-contact">Confirm Password</label>
+                                <Controller
+                                  name="confirmPassword"
+                                  control={control}
+                                  defaultValue=""
+                                  rules={{
+                                    required: "Confirm Password is required",
+                                    validate: (value) =>
+                                      value === getValues("password") ||
+                                      "Password and Confirm Password must match",
+                                  }}
+                                  render={({ field }) => (
+                                    <TextField
+                                      variant="outlined"
+                                      style={{ width: "25rem" }}
+                                      fullWidth
+                                      error={Boolean(errors.confirmPassword)}
+                                      helperText={
+                                        errors.confirmPassword ? errors.confirmPassword.message : ""
+                                      }
+                                      {...field}
+                                      type="password"
+                                    />
+                                  )}
+                                />
+                              </StyledControllerContainer>
+
+
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="row">
+                          <div className="col-lg-12">
+                            <div className="mar-15">
+                              <StyledControllerContainer>
+                              <label className="label-contact">Address</label>
+                                <Controller
+                                  name="address"
+                                  control={control}
+                                  defaultValue=""
+                                  rules={{ required: "Address is required" }}
+                                  render={({ field }) => (
+                                    <TextField
+                                      variant="outlined"
+                                      style={{ width: "25rem" }}
+                                      error={Boolean(errors.address)}
+                                      helperText={errors.address ? errors.address.message : ""}
                                       {...field}
                                       onChange={(e) => {
                                         field.onChange(e);
+                                        console.log("Address values:", e.target.value);
                                       }}
-                                      onSelect={handleConditionSelect}
-                                      value={watch("conditionsSuggestions")}
-                                      options={terms.map((term) => ({ value: term }))}
                                     />
-                                  </div>
-                                )}
-                              />
-                            </StyledControllerContainer>
-
+                                  )}
+                                />
+                              </StyledControllerContainer>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-lg-12">
-                          <div className="mar-15">
-                            <StyledControllerContainer>
-                              <Controller
-                                name="conditions"
-                                control={control}
-                                render={({ field }) => (
-                                  <div>
-                                    <Select
-                                      mode="multiple"
-                                     
-                                      open={false}
-                                      style={{ width: "25rem", marginTop: "1rem" }}
-                                      placeholder="Conditions/Diseases treated"
+
+                        <div className="row">
+                          <div className="col-lg-12">
+                            <div className="mar-15">
+
+                              <StyledControllerContainer>
+                                <label className="label-contact">City</label>
+                                <Controller
+                                  name="city"
+
+                                  control={control}
+                                  defaultValue=""
+                                  rules={{ required: "City is required" }}
+                                  render={({ field }) => (
+                                    <TextField
+                                      variant="outlined"
+                                      style={{ width: "25rem" }}
+                                      error={Boolean(errors.city)}
+                                      helperText={errors.city ? errors.city.message : ""}
                                       {...field}
-                                      options={[]}
                                     />
-                                  </div>
-                                )}
-                              />
-                            </StyledControllerContainer>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-lg-12">
-                          <div className="mar-15">
-                            <label for="" className="label-contact">Treatments</label>
-                            <StyledControllerContainer>
-                              <Controller
-                                name="treatments"
-                                control={control}
-                                defaultValue={[]}
-                                rules={{
-                                  required: "At least one Treatment Type must be selected",
-                                }}
-                                render={({ field }) => (
-                                  <div>
+                                  )}
+                                />
+                              </StyledControllerContainer>
 
-                                    <div className="flexmen">
-                                      <Button
-                                        variant={
-                                          field.value.includes("PRP") ? "contained" : "outlined"
-                                        }
-                                        color="primary"
-                                        onClick={() =>
-                                          handleTreatmentSelection(field.value, "PRP", field)
-                                        }
-                                      >
-                                        PRP
-                                      </Button>
-                                      <Button
-                                        variant={
-                                          field.value.includes("Stem Cell")
-                                            ? "contained"
-                                            : "outlined"
-                                        }
-                                        color="primary"
-                                        onClick={() =>
-                                          handleTreatmentSelection(
-                                            field.value,
-                                            "Stem Cell",
-                                            field
-                                          )
-                                        }
-                                      >
-                                        Stem Cell Therapy
-                                      </Button>
-                                      <Button
-                                        variant={
-                                          field.value.includes("Prolotherapy")
-                                            ? "contained"
-                                            : "outlined"
-                                        }
-                                        color="primary"
-                                        onClick={() =>
-                                          handleTreatmentSelection(
-                                            field.value,
-                                            "Prolotherapy",
-                                            field
-                                          )
-                                        }
-                                      >
-                                        Prolotherapy
-                                      </Button>
-                                    </div>
-                                    {/* Add more buttons for different treatments */}
-                                  </div>
-                                )}
-                              />
-                              {errors.treatments && <p>{errors.treatments.message}</p>}
-                            </StyledControllerContainer>
+
+                            </div>
+
                           </div>
                         </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-lg-12">
-                          <div className="mar-15">
-                            {/* <label for="" className="label-contact">Address</label> */}
-                            <StyledControllerContainer>
-                              <Controller
-                                name="address"
-                                control={control}
-                                defaultValue=""
-                                rules={{ required: "Address is required" }}
-                                render={({ field }) => (
-                                  <TextField
-                                    label="Address"
-                                   
-                                    variant="outlined"
-                                    style={{ width: "25rem" }}
-                                    error={Boolean(errors.address)}
-                                    helperText={errors.address ? errors.address.message : ""}
-                                    {...field}
-                                    onChange={(e) => {
-                                      field.onChange(e);
-                                      console.log("Address values:", e.target.value);
-                                    }}
-                                  />
-                                )}
-                              />
-                            </StyledControllerContainer>
+
+                        <div className="row">
+                          <div className="col-lg-12">
+                            <div className="mar-15">
+                              <StyledControllerContainer>
+                                <label className="label-contact">State</label>
+                                <Controller
+                                  name="state"
+                                  control={control}
+                                  defaultValue=""
+                                  rules={{
+                                    required:
+                                      selectedCountry === "United States" ||
+                                        selectedCountry === "Mexico" ||
+                                        selectedCountry === "Canada"
+                                        ? "State is required"
+                                        : undefined, // Set the rule to undefined if state is not required
+                                  }}
+                                  render={({ field }) => (
+                                    <TextField
+
+                                      variant="outlined"
+                                      style={{ width: "25rem" }}
+                                      error={Boolean(errors.state)}
+                                      helperText={errors.state ? errors.state.message : ""}
+                                      select
+                                      disabled={isStateDisabled} // Set the disabled state based on isStateDisabled
+                                      {...field}
+                                    >
+                                      {selectedCountry === "Canada"
+                                        ? provinces.map((province) => (
+                                          <MenuItem key={province} value={province}>
+                                            {province}
+                                          </MenuItem>
+                                        ))
+                                        : states.map((state) => (
+                                          <MenuItem key={state} value={state}>
+                                            {state}
+                                          </MenuItem>
+                                        ))}
+                                    </TextField>
+                                  )}
+                                />
+                              </StyledControllerContainer>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-lg-12">
-                          <div className="mar-15">
-                            {/* <label for="" className="label-contact">Country</label> */}
-                            <StyledControllerContainer>
-                              <Controller
-                                name="country"
-                                control={control}
-                                defaultValue=""
-                                rules={{ required: "Country is required" }}
-                                render={({ field }) => (
-                                  <TextField
-                                    label="Country"
-                                   
-                                    variant="outlined"
-                                    style={{ width: "25rem" }}
-                                    error={Boolean(errors.country)}
-                                    helperText={errors.country ? errors.country.message : ""}
-                                    select
-                                    {...field}
-                                    onChange={(e) => {
-                                      field.onChange(e);
-                                      handleCountryChange(e); // Call the handleCountryChange function
-                                    }}
-                                    SelectProps={{
-                                      MenuProps: {
-                                        PaperProps: {
-                                          style: {
-                                            maxHeight: "30vh",
+
+                        <div className="row">
+                          <div className="col-lg-12">
+                            <div className="mar-15">
+                              <StyledControllerContainer>
+                                <label className="label-contact">Country</label>
+                                <Controller
+                                  name="country"
+                                  control={control}
+                                  defaultValue=""
+                                  rules={{ required: "Country is required" }}
+                                  render={({ field }) => (
+                                    <TextField
+                                      
+                                      variant="outlined"
+                                      style={{ width: "25rem" }}
+                                      error={Boolean(errors.country)}
+                                      helperText={errors.country ? errors.country.message : ""}
+                                      select
+                                      {...field}
+                                      onChange={(e) => {
+                                        field.onChange(e);
+                                        handleCountryChange(e); // Call the handleCountryChange function
+                                      }}
+                                      SelectProps={{
+                                        MenuProps: {
+                                          PaperProps: {
+                                            style: {
+                                              maxHeight: "30vh",
+                                            },
                                           },
                                         },
-                                      },
-                                    }}
-                                  >
-                                    {countries.map((country) => (
-                                      <MenuItem key={country} value={country}>
-                                        {country}
-                                      </MenuItem>
-                                    ))}
-                                  </TextField>
-                                )}
-                              />
-                            </StyledControllerContainer>
-
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="row">
-                        <div className="col-lg-12">
-                          <div className="mar-15">
-                            {/* <label for="" className="label-contact">State</label> */}
-                            <StyledControllerContainer>
-                              <Controller
-                                name="state"
-                                control={control}
-                                defaultValue=""
-                                rules={{
-                                  required:
-                                    selectedCountry === "United States" ||
-                                      selectedCountry === "Mexico" ||
-                                      selectedCountry === "Canada"
-                                      ? "State is required"
-                                      : undefined, // Set the rule to undefined if state is not required
-                                }}
-                                render={({ field }) => (
-                                  <TextField
-                                    label="State"
-                                   
-                                    variant="outlined"
-                                    style={{ width: "25rem" }}
-                                    error={Boolean(errors.state)}
-                                    helperText={errors.state ? errors.state.message : ""}
-                                    select
-                                    disabled={isStateDisabled} // Set the disabled state based on isStateDisabled
-                                    {...field}
-                                  >
-                                    {selectedCountry === "Canada"
-                                      ? provinces.map((province) => (
-                                        <MenuItem key={province} value={province}>
-                                          {province}
-                                        </MenuItem>
-                                      ))
-                                      : states.map((state) => (
-                                        <MenuItem key={state} value={state}>
-                                          {state}
+                                      }}
+                                    >
+                                      {countries.map((country) => (
+                                        <MenuItem key={country} value={country}>
+                                          {country}
                                         </MenuItem>
                                       ))}
-                                  </TextField>
-                                )}
-                              />
-                            </StyledControllerContainer>
+                                    </TextField>
+                                  )}
+                                />
+                              </StyledControllerContainer>
+
+                            </div>
                           </div>
                         </div>
-                      </div>
 
+                        <div className="row">
+                          <div className="col-lg-12">
+                            <div className="mar-15">
 
-                      <div className="row">
-                        <div className="col-lg-12">
-                          <div className="mar-15">
-                            {/* <label for="" className="label-contact">City</label> */}
+                              <StyledControllerContainer>
+                              <label className="label-contact">Phone</label>
+                                <Controller
+                                  name="phone"
+                                  control={control}
+                                  defaultValue=""
+                                  rules={{
+                                    required: "Phone is required",
+                                    pattern: {
+                                      value: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/,
+                                      message: "Invalid phone number format",
+                                    },
+                                  }}
+                                  render={({ field }) => (
+                                    <TextField
+                                      variant="outlined"
+                                      style={{ width: "25rem" }}
+                                      error={Boolean(errors.phone)}
+                                      helperText={errors.phone ? errors.phone.message : ""}
+                                      {...field}
+                                    />
+                                  )}
+                                />
+                              </StyledControllerContainer>
 
-                            <StyledControllerContainer>
-                              <Controller
-                                name="city"
-                               
-                                control={control}
-                                defaultValue=""
-                                rules={{ required: "City is required" }}
-                                render={({ field }) => (
-                                  <TextField
-                                    label="City"
-                                    variant="outlined"
-                                    style={{ width: "25rem" }}
-                                    error={Boolean(errors.city)}
-                                    helperText={errors.city ? errors.city.message : ""}
-                                    {...field}
-                                  />
-                                )}
-                              />
-                            </StyledControllerContainer>
-
-
-                          </div>
-
-                        </div>
-                      </div>
-
-
-                      <div className="row">
-                        <div className="col-lg-12">
-                          <div className="mar-15">
-                            {/* <label for="" className="label-contact">Phone</label> */}
-
-                            <StyledControllerContainer>
-                              <Controller
-                                name="phone"
-                                control={control}
-                                defaultValue=""
-                                rules={{
-                                  required: "Phone is required",
-                                  pattern: {
-                                    value: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/,
-                                    message: "Invalid phone number format",
-                                  },
-                                }}
-                                render={({ field }) => (
-                                  <TextField
-                                    label="Phone"
-                                   
-                                    variant="outlined"
-                                    style={{ width: "25rem" }}
-                                    error={Boolean(errors.phone)}
-                                    helperText={errors.phone ? errors.phone.message : ""}
-                                    {...field}
-                                  />
-                                )}
-                              />
-                            </StyledControllerContainer>
-
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      <div className="row">
-                        <div className="col-lg-12">
-                          <div className="mar-15">
-                            {/* <label for="" className="label-contact">Website</label> */}
-                            <StyledControllerContainer>
-                              <Controller
-                                name="website"
-                                control={control}
-                                defaultValue=""
-                                render={({ field }) => (
-                                  <TextField
-                                    label="Website"
-                                   
-                                    variant="outlined"
-                                    style={{ width: "25rem" }}
-                                    rules={{
-                                      pattern: {
-                                        value: /^(ftp|http|https):\/\/[^ "]+$/,
-                                        message: "Invalid website URL",
-                                      },
-                                    }}
-                                    error={Boolean(errors.website)}
-                                    helperText={errors.website ? errors.website.message : ""}
-                                    {...field}
-                                    onChange={(e) => {
-                                      field.onChange(e);
-                                      console.log("Website values:", e.target.value);
-                                    }}
-                                  />
-                                )}
-                              />
-                            </StyledControllerContainer>
+                        <div className="row">
+                          <div className="col-lg-12">
+                            <div className="mar-15">
+                              <StyledControllerContainer>
+                                <label className="label-contact">Website</label>
+                                <Controller
+                                  name="website"
+                                  control={control}
+                                  defaultValue=""
+                                  render={({ field }) => (
+                                    <TextField
+
+                                      variant="outlined"
+                                      style={{ width: "25rem" }}
+                                      rules={{
+                                        pattern: {
+                                          value: /^(ftp|http|https):\/\/[^ "]+$/,
+                                          message: "Invalid website URL",
+                                        },
+                                      }}
+                                      error={Boolean(errors.website)}
+                                      helperText={errors.website ? errors.website.message : ""}
+                                      {...field}
+                                      onChange={(e) => {
+                                        field.onChange(e);
+                                        console.log("Website values:", e.target.value);
+                                      }}
+                                    />
+                                  )}
+                                />
+                              </StyledControllerContainer>
+                            </div>
                           </div>
                         </div>
-                      </div>
+
+                        <div className="row">
+                          <div className="col-lg-12">
+                            <div className="mar-15">
+                              <label className="label-contact">Treatment Type(s) offered</label>
+                              <StyledControllerContainer>
+                                <Controller
+                                  name="treatments"
+                                  control={control}
+                                  defaultValue={[]}
+                                  rules={{
+                                    required: "At least one Treatment Type must be selected",
+                                  }}
+                                  render={({ field }) => (
+                                    <div>
+
+                                      <div className="flexmen">
+                                        <Button
+                                          variant={
+                                            field.value.includes("PRP") ? "contained" : "outlined"
+                                          }
+                                          color="primary"
+                                          onClick={() =>
+                                            handleTreatmentSelection(field.value, "PRP", field)
+                                          }
+                                        >
+                                          PRP
+                                        </Button>
+                                        <Button
+                                          variant={
+                                            field.value.includes("Stem Cell")
+                                              ? "contained"
+                                              : "outlined"
+                                          }
+                                          color="primary"
+                                          onClick={() =>
+                                            handleTreatmentSelection(
+                                              field.value,
+                                              "Stem Cell",
+                                              field
+                                            )
+                                          }
+                                        >
+                                          Stem Cell Therapy
+                                        </Button>
+                                        <Button
+                                          variant={
+                                            field.value.includes("Prolotherapy")
+                                              ? "contained"
+                                              : "outlined"
+                                          }
+                                          color="primary"
+                                          onClick={() =>
+                                            handleTreatmentSelection(
+                                              field.value,
+                                              "Prolotherapy",
+                                              field
+                                            )
+                                          }
+                                        >
+                                          Prolotherapy
+                                        </Button>
+                                      </div>
+                                      {/* Add more buttons for different treatments */}
+                                    </div>
+                                  )}
+                                />
+                                {errors.treatments && <p>{errors.treatments.message}</p>}
+                              </StyledControllerContainer>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="row">
+                          <div className="col-lg-12">
+                            <div className="mar-15">
+                              <StyledControllerContainer>
+                                <label className="label-contact">About</label>
+                                <Controller
+                                  name="description"
+                                  control={control}
+                                  defaultValue=""
+                                  render={({ field }) => (
+                                    <TextField
+
+                                      variant="outlined"
+                                      style={{ width: "25rem" }}
+                                      error={Boolean(errors.description)}
+                                      helperText={errors.description ? errors.description.message : ""}
+                                      {...field}
+                                      onChange={(e) => {
+                                        field.onChange(e);
+                                        console.log("About values:", e.target.value);
+                                      }}
+                                    />
+                                  )}
+                                />
+                              </StyledControllerContainer>
+                            </div>
+                          </div>
+                        </div>
+                        
+
+
+                        <div className="row">
+                          <div className="col-lg-12">
+                            <div className="mar-15">
+                              
+                              <StyledControllerContainer
+                                onMouseEnter={() => setShowConditionsDropdown(true)}
+                                onMouseLeave={() => setShowConditionsDropdown(false)}
+                              >
+                                <label className="label-contact">Conditions Treated</label>
+                                <Controller
+                                  name="conditionsSuggestions"
+                                  control={control}
+                                  render={({ field }) => (
+                                    <div>
+                                      <Select
+                                        mode="tags"
+                                        label="Conditions"
+
+                                        ref={conditionRef}
+                                        open={showConditionsDropdown}
+                                        style={{ width: "25rem", marginTop: "1rem" }}
+                                        placeholder="Select Your Conditions/Diseases treated"
+                                        {...field}
+                                        onChange={(e) => {
+                                          field.onChange(e);
+                                        }}
+                                        onSelect={handleConditionSelect}
+                                        value={watch("conditionsSuggestions")}
+                                        options={terms.map((term) => ({ value: term }))}
+                                      />
+                                    </div>
+                                  )}
+                                />
+                              </StyledControllerContainer>
+
+                            </div>
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-lg-12">
+                            <div className="mar-15">
+                              <StyledControllerContainer>
+                                <Controller
+                                  name="conditions"
+                                  control={control}
+                                  render={({ field }) => (
+                                    <div>
+                                      <Select
+                                        mode="multiple"
+
+                                        open={false}
+                                        style={{ width: "25rem", marginTop: "1rem" }}
+                                        placeholder="Conditions/Diseases treated"
+                                        {...field}
+                                        options={[]}
+                                      />
+                                    </div>
+                                  )}
+                                />
+                              </StyledControllerContainer>
+                            </div>
+                          </div>
+                        </div>
+                      
+                        
+                        
+
+                        
+
+
+                        
+
+
+                      
+
+                        
 
 
 
-                      {/* <div className="row">
+                        {/* <div className="row">
                       <div className="col-lg-12">
                         <div className="mar-15">
 
@@ -750,98 +867,19 @@ const Register = () => {
                       </div>
                     </div> */}
 
-                      <div className="row">
-                        <div className="col-lg-12">
-                          <div className="mar-15">
-                            {/* <label for="" className="label-contact">Password</label> */}
 
-                            <StyledControllerContainer>
-                              <Controller
-                                name="password"
-                                control={control}
-                                defaultValue=""
-                                rules={{
-                                  required: "Password is required",
-                                  validate: {
-                                    strongEnough: (value) =>
-                                      isPasswordStrongEnough(value) ||
-                                      'Password must be at least "Fair" strength',
-                                  },
-                                }}
-                                render={({ field }) => (
-                                  <TextField
-                                    label="Password"
-                                   
-                                    variant="outlined"
-                                    style={{ width: "25rem" }}
-                                    error={Boolean(errors.password)}
-                                    helperText={errors.password ? errors.password.message : ""}
-                                    {...field}
-                                    type="password"
-                                    onChange={(e) => {
-                                      field.onChange(e);
-                                      console.log("Password values:", e.target.value);
-                                    }}
-                                  />
-                                )}
-                              />
-                              <p>Password Strength: {getPasswordStrength()}</p>
-                            </StyledControllerContainer>
 
+
+
+                        <div className="row">
+                          <div className="col-lg-12">
+                            <div className="mar-no">
+                              <button type="submit" variant="contained" className="Send-message">Sign Up</button>
+                            </div>
                           </div>
                         </div>
+
                       </div>
-
-                      <div className="row">
-                        <div className="col-lg-12">
-                          <div className="mar-15">
-                            {/* <label for="" className="label-contact">Confirm Password</label> */}
-
-                            <StyledControllerContainer>
-                              <Controller
-                                name="confirmPassword"
-                                control={control}
-                                defaultValue=""
-                                rules={{
-                                  required: "Confirm Password is required",
-                                  validate: (value) =>
-                                    value === getValues("password") ||
-                                    "Password and Confirm Password must match",
-                                }}
-                                render={({ field }) => (
-                                  <TextField
-                                    label="Confirm Password"
-                                   
-                                    variant="outlined"
-                                    style={{ width: "25rem" }}
-                                    fullWidth
-                                    error={Boolean(errors.confirmPassword)}
-                                    helperText={
-                                      errors.confirmPassword ? errors.confirmPassword.message : ""
-                                    }
-                                    {...field}
-                                    type="password"
-                                  />
-                                )}
-                              />
-                            </StyledControllerContainer>
-
-
-                          </div>
-                        </div>
-                      </div>
-
-
-
-                      <div className="row">
-                        <div className="col-lg-12">
-                          <div className="mar-no">
-                            <button type="submit" variant="contained" className="Send-message">Sign Up</button>
-                          </div>
-                        </div>
-                      </div>
-
-                    </div>
                     }
                   </form>
 

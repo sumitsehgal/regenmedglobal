@@ -127,11 +127,13 @@ const Navbar = () => {
   console.log('current user from navbar', currentUser);
 
   let currentUserID;
-  try {
-    const jsonUser = JSON.parse(currentUser);
-    currentUserID = jsonUser.userId;
-  } catch (error) {
-    console.error('Error parsing or accessing user data:', error);
+  if(Object.keys(currentUser).length !== 0) {
+    try {
+      const jsonUser = JSON.parse(currentUser);
+      currentUserID = jsonUser.userId;
+    } catch (error) {
+      console.error('Error parsing or accessing user data:', error);
+    }
   }
 
   const toggleDrawer = () => {
@@ -151,20 +153,20 @@ const Navbar = () => {
     <AppBar position="fixed">
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
           <div className="container-fluid">
-            <a className="navbar-brand" href="/"><img src={img3} /></a>
+            <Link className="navbar-brand" to="/"><img src={img3} /></Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/home">Home</a>
+                  <Link className="nav-link active" aria-current="page" to="/home">Home</Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/services">About</a>
+                  <Link className="nav-link" to="/services">About</Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/contact">Contact</a>
+                  <Link className="nav-link" to="/contact">Contact</Link>
                 </li>
                 {/* <li className="nav-item">
                   <a className="nav-link" href="#">FAQ</a>
@@ -172,14 +174,12 @@ const Navbar = () => {
               </ul>
               <form className="d-flex" role="search">
                 <ul className='right-nav'>
-                  {/* <li><a><img className='img-1-width' src={img1} />ENG</a></li>
-                  <li><a><img className='img-2-width' src={img2} /></a></li> */}
                   {loggedIn ? (
                     <li className="nav-item">
                       <a className="nav-link" onClick={handleLogout} style={{ color: '#000 !important' }}>Logout</a>
                     </li>
                   ) :(
-                  <li><button className='doc-login'> <a className="nav-link" href="/doctorlogin">Doctor Login</a></button></li>
+                  <li> <button className='doc-login' type='button'> <Link className="nav-link " to="/doctorlogin">Doctor Login</Link></button></li>
                 )}
                 </ul>
               </form>

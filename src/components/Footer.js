@@ -2,35 +2,36 @@ import imgLogo from "../assets/logo.png"
 import imgTwitter from "../assets/twt.png";
 import imgFB from "../assets/fb.png";
 import imgInsta from "../assets/insta.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
 
     return (
-        <div class="footer-custom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="center-footer">
-                            <div class="center-footer-1">
-                                <img src={imgLogo} class="logo-footer" alt="" />
+        <div className="footer-custom">
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-12">
+                        <div className="center-footer">
+                            <div className="center-footer-1">
+                                <img src={imgLogo} className="logo-footer" alt="" />
                             </div>
-                            <div class="center-footer-2">
+                            <div className="center-footer-2">
                                 <ul>
-                                    <li><a href="javascript:void(0)">Home</a></li>
-                                    <li><a href="javascript:void(0)">About</a></li>
-                                    <li><a href="javascript:void(0)">Contact</a></li>
-                                    <li><a href="javascript:void(0)">FAQ</a></li>
+                                    <li><Link to="/home">Home</Link></li>
+                                    <li><Link href="/about">About</Link></li>
+                                    <li><Link href="/contact">Contact</Link></li>
+                                    <li><Link href="/home">FAQ</Link></li>
                                 </ul>
                             </div>
-                            <div class="center-footer-3">
+                            <div className="center-footer-3">
                                 <ul>
-                                    <li><a href="javascript:void(0)"><img src={imgTwitter} alt="" /></a></li>
-                                    <li><a href="javascript:void(0)"><img src={imgFB} alt="" /></a></li>
-                                    <li><a href="javascript:void(0)"><img src={imgInsta} alt="" /></a></li>
+                                    <li><a href="https://twitter.com" target="_blank" ><img src={imgTwitter} alt="" /></a></li>
+                                    <li><a href="https://facebook.com" target="_blank"><img src={imgFB} alt="" /></a></li>
+                                    <li><a href="https://instagram.com" target="_blank"><img src={imgInsta} alt="" /></a></li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="right-copy">
+                        <div className="right-copy">
                             <p>© Copyright 2023, All Rights Reserved by Regenerative</p>
                         </div>
                     </div>
