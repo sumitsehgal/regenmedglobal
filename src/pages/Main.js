@@ -208,7 +208,7 @@ const Main = () => {
                           options={options}
                           onSelect={(value) => setSearchTerm(value)}
                           onSearch={handleSearch}
-                          placeholder="Search medical conditions (optional)"
+                          placeholder="Medical condition (optional)"
                         />
                       </li>
 
@@ -245,7 +245,7 @@ const Main = () => {
               <div className="Regenerative-right">
                 <p className="Regenerative-p">What is Regenerative Medicine?</p>
                 <p className="Regenerative-p1">The process of repairing or regenerating human cells, tissues, or organs as a result of disease, aging, or defects. </p>
-                <button className="Regenerative-button">Explore Now</button>
+                {/* <button className="Regenerative-button">Explore Now</button> */}
               </div>
             </div>
           </div>
@@ -258,7 +258,7 @@ const Main = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="service-top">
-                <p className="service-1">Our Services To You</p>
+                {/* <p className="service-1">Our Services To You</p> */}
                 <p className="service-2">What you can find here</p>
                 <p className="service-3">Find a Regenerative Medicine Doctor that offers the types of treatments below:</p>
               </div>

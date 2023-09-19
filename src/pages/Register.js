@@ -11,6 +11,7 @@ import { Select } from "antd";
 import _ from "lodash"; // Import lodash
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import TextArea from "antd/es/input/TextArea";
 
 const Container = styled.div`
   display: flex;
@@ -384,7 +385,7 @@ const Register = () => {
                                     />
                                   )}
                                 />
-                                <p>Password Strength: {getPasswordStrength()}</p>
+                                <p style={{marginTop:"5px"}}>Password Strength: {getPasswordStrength()}</p>
                               </StyledControllerContainer>
 
                             </div>
@@ -537,6 +538,36 @@ const Register = () => {
                         <div className="row">
                           <div className="col-lg-12">
                             <div className="mar-15">
+
+                              <StyledControllerContainer>
+                                <label className="label-contact">Zip Code</label>
+                                <Controller
+                                  name="zip"
+
+                                  control={control}
+                                  defaultValue=""
+                                  rules={{ required: "Zip is required" }}
+                                  render={({ field }) => (
+                                    <TextField
+                                      variant="outlined"
+                                      style={{ width: "25rem" }}
+                                      error={Boolean(errors.zip)}
+                                      helperText={errors.zip ? errors.zip.message : ""}
+                                      {...field}
+                                    />
+                                  )}
+                                />
+                              </StyledControllerContainer>
+
+
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div className="row">
+                          <div className="col-lg-12">
+                            <div className="mar-15">
                               <StyledControllerContainer>
                                 <label className="label-contact">Country</label>
                                 <Controller
@@ -673,6 +704,7 @@ const Register = () => {
                                           onClick={() =>
                                             handleTreatmentSelection(field.value, "PRP", field)
                                           }
+                                          className={field.value.includes("PRP") ? " active " : ""}
                                         >
                                           PRP
                                         </Button>
@@ -682,6 +714,7 @@ const Register = () => {
                                               ? "contained"
                                               : "outlined"
                                           }
+                                          className={field.value.includes("Stem Cell") ? " active " : ""}
                                           color="primary"
                                           onClick={() =>
                                             handleTreatmentSelection(
@@ -699,6 +732,7 @@ const Register = () => {
                                               ? "contained"
                                               : "outlined"
                                           }
+                                          className={field.value.includes("Prolotherapy") ? " active " : ""}
                                           color="primary"
                                           onClick={() =>
                                             handleTreatmentSelection(
@@ -725,13 +759,13 @@ const Register = () => {
                           <div className="col-lg-12">
                             <div className="mar-15">
                               <StyledControllerContainer>
-                                <label className="label-contact">About</label>
+                                <label className="label-contact">About Us</label>
                                 <Controller
                                   name="description"
                                   control={control}
                                   defaultValue=""
                                   render={({ field }) => (
-                                    <TextField
+                                    <TextArea
 
                                       variant="outlined"
                                       style={{ width: "25rem" }}
@@ -754,7 +788,7 @@ const Register = () => {
 
                         <div className="row">
                           <div className="col-lg-12">
-                            <div className="mar-15">
+                            <div className="mar-15-0 sero-rad">
                               
                               <StyledControllerContainer
                                 onMouseEnter={() => setShowConditionsDropdown(true)}
@@ -792,7 +826,7 @@ const Register = () => {
                         </div>
                         <div className="row">
                           <div className="col-lg-12">
-                            <div className="mar-15">
+                            <div className="mar-15 zer-radi">
                               <StyledControllerContainer>
                                 <Controller
                                   name="conditions"

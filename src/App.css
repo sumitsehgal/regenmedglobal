@@ -1797,7 +1797,15 @@ ul.banner-ul .ant-select-selection-search {
   right: 0 !important;
 }
 
-
+ul.banner-ul span.ant-select-selection-placeholder {
+  color: #fff !important;
+  position: relative;
+  top: 21px;
+  text-align: left;
+  left: 40px;
+  word-break: break-all;
+  font-size: 12px;
+}
 
 
 
@@ -2141,33 +2149,104 @@ p.span-clr {
   height: 50px;
   line-height: 50px !important;
   padding: 0 15px!important;
+  background: #fff;
+  border-radius: 4px;
+}
+.form-all.register-form span.ant-select-selection-item {
+  height: 40px !important;
+}
+.form-all.register-form textarea.ant-input {
+  height: 90px;
+  line-height: 50px !important;
+  padding: 0 15px!important;
+  background: #fff;
+  border-radius: 4px;
+  resize: none;
+  border: none;
+  width: 100% !important;
+  line-height: 20px !important;
 }
 .form-all.register-form .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
   width: 100% !important;
+  height: 46px;
+  line-height: 50px !important;
+  padding: 0 0px!important;
+  border-radius: 12px !important;
+  background: #FFF;
+  border: none !important;
+  color: #000 !important;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  font-family: 'Poppins', sans-serif;
 }
 .form-all.register-form {
   padding: 0;
+  border-radius: 22px;
+  background: #F6F6F6;
+}
+.form-all.register-form .sc-cuTEes.MDteb {
+  background: transparent;
+}
+.form-all.register-form .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  border: none;
 }
 .form-all.register-form .ant-select-selector {
-  border-radius: 4px !important;
-  border: 1px solid #a1a1a1 !important;
-  background: #FFF !important;
+  width: 100% !important;
+  text-align: left;
   height: 50px !important;
+  margin: 0 !important;
+  height: 46px;
+  line-height: 50px !important;
+  padding: 0 0px!important;
+  border-radius: 12px !important;
+  background: #FFF;
+  border: none !important;
+  color: #000 !important;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  font-family: 'Poppins', sans-serif;
 }
 .form-all.register-form .ant-select {
   width: 100% !important;
   text-align: left;
   height: 50px !important;
   margin: 0 !important;
-}
-.form-all.register-form .label-contact{
-  color: #000;
-}
+  height: 46px;
+  line-height: 50px !important;
+  padding: 0 0px!important;
+  border-radius: 12px !important;
+  background: #FFF;
+  border: none !important;
+  color: #000 !important;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  font-family: 'Poppins', sans-serif;
 
+}
+.form-all.register-form .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
+  height: 46px;
+  padding: 0 15px;
+  text-align: left;
+  line-height: 46px;
+}
+.form-all.register-form .label-contact {
+  color: #000;
+  font-weight: bold !important;
+  font-size: 16px !important;
+}
 .form-all.register-form .css-wb57ya-MuiFormControl-root-MuiTextField-root {
   width: 100% !important;
 }
-
+.form-all.register-form .css-1wc848c-MuiFormHelperText-root.Mui-error{
+  margin: 0 0 5px 0 !important;
+  font-size: 12px !important;
+}
 .form-all.register-form .mar-15 p {
   display: block;
   text-align: left;
@@ -2176,7 +2255,7 @@ p.span-clr {
   display: flex;
 }
 .flexmen button{
-  color: #FFF;
+  color: #000;
   text-align: center;
   font-family: Poppins;
   font-size: 16px;
@@ -2190,9 +2269,12 @@ p.span-clr {
   border: 1px solid transparent;
   padding: 0 15px;
   border-radius: 12px;
+  margin: 0 15px 0 0;
+}
+.flexmen button.active{
   border: 1px solid #E409E8;
   background: linear-gradient(180deg, #0019FB 0%, #E409E8 100%);
-  margin: 0 15px 0 0;
+  color: #fff;
 }
 /* .form-all.register-form .sc-cuTEes.MDteb {
     background: transparent;
@@ -2237,3 +2319,24 @@ p.span-clr {
     border: none !important;
     color: #fff !important;
 } */
+.form-custom .cIQeBa {
+  background-color: #F6F6F6;
+}
+
+.mar-15-0.sero-rad .sc-jamjDV.hUihHi {
+  margin: 0;
+}
+
+.form-all.register-form .mar-15-0.sero-rad  .ant-select-selector {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom: 1px solid #000 !important;
+}
+
+.form-all.register-form .mar-15.zer-radi .ant-select-selector {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+.form-all.register-form .label-contact {
+  margin: 5px 0 5px 0;
+}
