@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import { useForm, Controller } from "react-hook-form";
 import styled from "styled-components";
 import { TextField, Button, Snackbar, MenuItem } from "@mui/material";
 import MuiAlert from "@mui/material/Alert";
-import { states, countries, provinces, terms } from "../config";
+import { states, countries, provinces, terms, EDGE_URL } from "../config";
 import { insertNewUser, isEmailAlreadyInDB } from "./insertNewUser";
 import insertErrorLog from "../functions/insertErrors";
 import zxcvbn from "zxcvbn";
@@ -12,6 +13,7 @@ import _ from "lodash"; // Import lodash
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import TextArea from "antd/es/input/TextArea";
+import axios from 'axios';
 
 const Container = styled.div`
   display: flex;
@@ -67,6 +69,9 @@ const Title = styled.h3`
 `;
 
 const Register = () => {
+
+  const navigate = useNavigate();
+
   const conditionRef = React.useRef(null);
   const [showConditionsDropdown, setShowConditionsDropdown] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
@@ -145,8 +150,19 @@ const Register = () => {
     }
   }
 
-  const claimEmail = () => {
+  const claimEmail = async (e) => {
+    e.preventDefault()
 
+    const data = { email };
+
+    // Make the POST request to the API
+    const response = await axios.post(EDGE_URL+"/sendgrid-emailer", data);
+    const responseData = response.data;
+    console.log("Response ", responseData)
+    if(responseData.status) {
+      console.log("Redirect")
+      navigate("/CodeValidator/"+responseData.id+"?new=true")
+    }
   }
 
   const goToNext = () => {

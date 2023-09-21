@@ -68,7 +68,7 @@ function App() {
           <Route path='/profile/:userId' element={<Profile />} />
           <Route path='/claim' element={<Claim />} />
           <Route path='/ResetPassword' element={<ResetPassword />} />
-          <Route path='/CodeValidator' element={<CodeValidator />} />
+          <Route path='/CodeValidator/:id' element={<CodeValidator />} />
         </Routes>
         <Footer />
       </div>

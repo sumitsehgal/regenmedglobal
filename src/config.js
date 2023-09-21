@@ -6,6 +6,8 @@ export const SUPABASE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOi
 
 export const SCHEMA_NAME = "regendb";
 
+export const EDGE_URL = "https://blbguopkwtqcircgghnn.supabase.co/functions/v1"
+
 export const GOOGLE_MAPS_API_KEY = 'AIzaSyBsY7TWsifdD_oYfwhEKBqVdLzfBaSeu6A';
 export const EMAILJS_SERVICE_ID = 'service_2r0se76';
 export const EMAILJS_API_KEY = 'qVS-rHwiDSnK_KcU9';
