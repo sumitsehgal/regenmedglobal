@@ -92,11 +92,12 @@ const Register = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(false); // Add state for button disabled
 
-  const [isEmailExisted, setIsEmailExisted] = useState(true);
+  const [isValidEmail, setIsValidEmail] = useState(true);
+  const [isEmailInDB, setisEmailInDB] = useState(false);
+  const [fieldsVisibility, setFieldsVisibility] = useState(false)
   const [email, setEmail] = useState("")
 
   useEffect(() => {
-    // debouncedCheckEmailExistence()
     const timeout = setTimeout(() => {
       checkEmail()
     }, 300);
@@ -109,14 +110,15 @@ const Register = () => {
   const checkEmail = async () => {
     console.log("Email Checking...")
     console.log("Email Value ", email)
-    let isEmailInDB = await isEmailAlreadyInDB(email);
+    setIsValidEmail(checkEmailValidation(email));
+
+    let emailInDB = await isEmailAlreadyInDB(email);
+    setisEmailInDB(emailInDB)
     console.log("Email Status in DB ", isEmailInDB)
-    if (isEmailInDB) {
-      setIsEmailExisted(true)
+    if (emailInDB) {
+      setFieldsVisibility(false)
     }
   }
-
-  // const debouncedCheckEmailExistence = debounce(checkEmail, 1000);
 
   const handleCountryChange = (event) => {
     const selectedCountry = event.target.value;
@@ -134,11 +136,24 @@ const Register = () => {
     setErrorMessage(message);
   };
 
+  function checkEmailValidation(email) {
+    const regex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+    if (regex.test(email)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   const goToNext = () => {
-    if (email != "")
-      setIsEmailExisted(false)
-    else
+    if (email != "" && checkEmailValidation(email)){
+      setIsValidEmail(true)
+      setFieldsVisibility(true)
+    }else{
+      setIsValidEmail(false)
+      setFieldsVisibility(false)
       toast.error("Email Required.");
+    }
   }
 
   const onSubmit = async (data, event) => {
@@ -367,10 +382,13 @@ const Register = () => {
                         </div>
                       </div>
                     </div>
-                    {isEmailExisted &&
+                    {!isEmailInDB && !fieldsVisibility &&
                       <button type="button" onClick={goToNext} className="Send-message">Next</button>}
 
-                    {!isEmailExisted &&
+                    {isValidEmail && isEmailInDB && 
+                      <button type="button" onClick={goToNext} className="Send-message">Claim Email</button>}
+
+                    {fieldsVisibility &&
                       <div className="other-fields" >
 
                         <div className="row">
