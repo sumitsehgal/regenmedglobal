@@ -1,9 +1,9 @@
 import { createClient } from '@supabase/supabase-js';
-import { SUPABASE_URL, SUPABASE_API_KEY, tom } from '../config.js';
+import { SUPABASE_URL, SUPABASE_API_KEY, tom, SCHEMA_NAME } from '../config.js';
 import axios from 'axios'
 const supabaseUrl = SUPABASE_URL;
 const supabaseKey = SUPABASE_API_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabase = createClient(supabaseUrl, supabaseKey, {db: {schema: SCHEMA_NAME} });
 const maindataTable = 'maindata';
 
 const geocodeCity = async (city, state, country) => {

@@ -17,6 +17,7 @@ import ResetPassword from './pages/ResetPassword'
 import Home from './pages/Home'
 import Footer from './components/Footer'
 import "@fontsource/poppins";
+import CodeValidator from './pages/CodeValidator'
 
 function App() {
 
@@ -67,6 +68,7 @@ function App() {
           <Route path='/profile/:userId' element={<Profile />} />
           <Route path='/claim' element={<Claim />} />
           <Route path='/ResetPassword' element={<ResetPassword />} />
+          <Route path='/CodeValidator' element={<CodeValidator />} />
         </Routes>
         <Footer />
       </div>
