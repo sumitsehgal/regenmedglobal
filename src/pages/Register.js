@@ -347,7 +347,17 @@ const Register = () => {
                       </div>
                     </div>
                     {isEmailExisted &&
-                      <button type="button" onClick={goToNext} className="Send-message">Next</button>}
+                    
+                      <button type="button" onClick={goToNext} className="Send-message">Next</button>
+                      
+                      
+                      
+                    }
+
+                    <div className="another-div">
+                    <p className="claim-p">Email already exists. You can claim email.</p>
+                    <button type="button" onClick={goToNext} className="Send-message">Claim Email</button>
+                    </div>
 
                     {!isEmailExisted &&
                       <div className="other-fields" >
