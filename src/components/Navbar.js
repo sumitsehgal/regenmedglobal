@@ -179,8 +179,8 @@ const Navbar = () => {
                       <a className="nav-link" onClick={handleLogout} style={{ color: '#000 !important' }}>Logout</a>
                     </li>
                   ) :(
-                  <li> <button className='doc-login' type='button'> <Link className="nav-link " to="/doctorlogin">Doctor Login</Link></button></li>
-                )}
+                  <li> <Link className="nav-link doc-login" to="/doctorlogin">Doctor Login</Link></li>
+                )} 
                 </ul>
               </form>
             </div>
