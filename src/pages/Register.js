@@ -145,6 +145,10 @@ const Register = () => {
     }
   }
 
+  const claimEmail = () => {
+
+  }
+
   const goToNext = () => {
     if (email != "" && checkEmailValidation(email)){
       setIsValidEmail(true)
@@ -152,7 +156,7 @@ const Register = () => {
     }else{
       setIsValidEmail(false)
       setFieldsVisibility(false)
-      toast.error("Email Required.");
+      toast.error("Valid Email Required.");
     }
   }
 
@@ -382,11 +386,14 @@ const Register = () => {
                         </div>
                       </div>
                     </div>
-                    {!isEmailInDB && !fieldsVisibility &&
-                      <button type="button" onClick={goToNext} className="Send-message">Next</button>}
+
+                    {!isEmailInDB && !fieldsVisibility && <button type="button" onClick={goToNext} className="Send-message">Next</button>}
 
                     {isValidEmail && isEmailInDB && 
-                      <button type="button" onClick={goToNext} className="Send-message">Claim Email</button>}
+                    (<div className="another-div">
+                      <p className="claim-p">Email already exists. You can claim email.</p>
+                      <button type="button" onClick={claimEmail} className="Send-message">Claim Email</button>
+                    </div>)}
 
                     {fieldsVisibility &&
                       <div className="other-fields" >

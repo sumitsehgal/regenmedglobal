@@ -2340,3 +2340,13 @@ p.span-clr {
 .form-all.register-form .label-contact {
   margin: 5px 0 5px 0;
 }
+p.claim-p {
+  color: #f00;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  line-height: 20px;
+  margin: 15px 0 15px 0;
+  text-align: left;
+  font-weight: bold !important;
+  font-size: 16px !important;
+}
