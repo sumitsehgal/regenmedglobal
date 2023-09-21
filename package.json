@@ -41,6 +41,7 @@
     "jsonwebtoken": "^9.0.0",
     "leaflet": "^1.9.4",
     "lodash": "^4.17.21",
+    "lodash.debounce": "^4.0.8",
     "mailgun-js": "^0.22.0",
     "mandrill-api": "^1.0.45",
     "mapbox-gl": "^2.15.0",

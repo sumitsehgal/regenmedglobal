@@ -1,10 +1,10 @@
 import { createClient } from '@supabase/supabase-js';
-import { SUPABASE_URL, SUPABASE_API_KEY, EMAILJS_API_KEY, EMAILJS_SERVICE_ID, MAILCHIMP_API_KEY } from '../config.js';
+import { SUPABASE_URL, SUPABASE_API_KEY, EMAILJS_API_KEY, EMAILJS_SERVICE_ID, MAILCHIMP_API_KEY, SCHEMA_NAME } from '../config.js';
 import axios from 'axios';
 
 const supabaseUrl = SUPABASE_URL;
 const supabaseKey = SUPABASE_API_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabase = createClient(supabaseUrl, supabaseKey, { db: { schema: SCHEMA_NAME } });
 const maindataTable = 'maindata';
 
 import emailjs from 'emailjs-com';
@@ -55,57 +55,57 @@ const geocodeCity = async (city, state, country) => {
   }
 };
 
-  //  // Send a welcome email to the newly registered user
-  //  const sendWelcomeEmail = async (userData) => {
-  //   // Prepare the welcome email content
-  //   const emailContent = `
-  //     Dear ${userData.clinicName},
-  
-  //     Welcome to our platform! Thank you for registering with us.
-  
-  //     Here are the details you provided:
-  //     ${Object.entries(userData)
-  //       .filter(([key]) => !['password', 'confirmPassword', 'latitude', 'longitude', 'conditionsSuggestions', 'confirmEmail'].includes(key))
-  //       .map(([key, value]) => {
-  //         if (key === 'clinicName') {
-  //           return `Doctor/Clinic Name: ${value}`;
-  //         }
-  //         if (key === 'website') {
-  //           return value ? `Website: ${value}` : '';
-  //         }
-  //         return `${key}: ${value}`;
-  //       })
-  //       .filter((line) => line !== '')
-  //       .join('\n')}
-  
-  //     If you have any questions or need assistance, feel free to contact us.
-  
-  //     Best regards,
-  //     Your Platform Team
-  //   `;
-  
-  //   const message = {
-  //     html: emailContent,
-  //     subject: 'Welcome to Our Platform!',
-  //     from_email: 'ben@regenmedgloba.com',
-  //     from_name: 'Your Platform Team',
-  //     to: [{ email: userData.email, name: userData.clinicName }],
-  //     important: true,
-  //     track_opens: true,
-  //     track_clicks: true,
-  //   };
-  
-  //   // Send the email using Mandrill API
-  //   try {
-  //     const result = await mandrill.messages.send({ message });
-  //     console.log('Email sent successfully:', result);
-  //   } catch (error) {
-  //     console.error('Error sending email:', error);
-  //     throw new Error('Failed to send welcome email');
-  //   }
-  // };
+//  // Send a welcome email to the newly registered user
+//  const sendWelcomeEmail = async (userData) => {
+//   // Prepare the welcome email content
+//   const emailContent = `
+//     Dear ${userData.clinicName},
 
-const insertNewUser = async (userData) => {
+//     Welcome to our platform! Thank you for registering with us.
+
+//     Here are the details you provided:
+//     ${Object.entries(userData)
+//       .filter(([key]) => !['password', 'confirmPassword', 'latitude', 'longitude', 'conditionsSuggestions', 'confirmEmail'].includes(key))
+//       .map(([key, value]) => {
+//         if (key === 'clinicName') {
+//           return `Doctor/Clinic Name: ${value}`;
+//         }
+//         if (key === 'website') {
+//           return value ? `Website: ${value}` : '';
+//         }
+//         return `${key}: ${value}`;
+//       })
+//       .filter((line) => line !== '')
+//       .join('\n')}
+
+//     If you have any questions or need assistance, feel free to contact us.
+
+//     Best regards,
+//     Your Platform Team
+//   `;
+
+//   const message = {
+//     html: emailContent,
+//     subject: 'Welcome to Our Platform!',
+//     from_email: 'ben@regenmedgloba.com',
+//     from_name: 'Your Platform Team',
+//     to: [{ email: userData.email, name: userData.clinicName }],
+//     important: true,
+//     track_opens: true,
+//     track_clicks: true,
+//   };
+
+//   // Send the email using Mandrill API
+//   try {
+//     const result = await mandrill.messages.send({ message });
+//     console.log('Email sent successfully:', result);
+//   } catch (error) {
+//     console.error('Error sending email:', error);
+//     throw new Error('Failed to send welcome email');
+//   }
+// };
+
+export const insertNewUser = async (userData) => {
   try {
     const {
       clinicName,
@@ -121,19 +121,19 @@ const insertNewUser = async (userData) => {
       password,
     } = userData;
 
-     // Check if the email is already used in the database
-     const { data: existingUser, error: fetchError } = await supabase
-     .from(maindataTable)
-     .select('email') // Specify the columns you want to retrieve (e.g., 'email')
-     .eq('email', email)
-     .single();
+    // Check if the email is already used in the database
+    const { data: existingUser, error: fetchError } = await supabase
+      .from(maindataTable)
+      .select('email') // Specify the columns you want to retrieve (e.g., 'email')
+      .eq('email', email)
+      .single();
 
-   if (existingUser) {
-     // Email already exists in the database, throw an error
-     const error = new Error('Email already in use. Please choose a different email address.');
-     error.name = 'EmailExistingError';
-     throw error;
-   }
+    if (existingUser) {
+      // Email already exists in the database, throw an error
+      const error = new Error('Email already in use. Please choose a different email address.');
+      error.name = 'EmailExistingError';
+      throw error;
+    }
 
     // Generate a random 7-digit number as the id
     const id = Math.floor(Math.random() * 9000000) + 1000000;
@@ -181,7 +181,7 @@ const insertNewUser = async (userData) => {
 
     console.log('Data inserted successfully:', data);
 
-     
+
 
 
     return { message: 'Data inserted successfully' };
@@ -191,5 +191,27 @@ const insertNewUser = async (userData) => {
   }
 };
 
+export const isEmailAlreadyInDB = async (email) => {
 
-export default insertNewUser;
+  try {
+
+    const { data: existingUser, error: fetchError } = await supabase
+      .from(maindataTable)
+      .select('email') // Specify the columns you want to retrieve (e.g., 'email')
+      .eq('email', email)
+      .single();
+    
+    if(fetchError) {
+      return false;
+    }
+
+    if (existingUser) {
+      return true;
+    }
+  } catch (error) {
+    console.error("Error in checking email: ", error);
+    throw error;
+  }
+
+  return false;
+}

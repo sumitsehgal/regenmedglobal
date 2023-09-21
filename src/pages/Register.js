@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import styled from "styled-components";
 import { TextField, Button, Snackbar, MenuItem } from "@mui/material";
 import MuiAlert from "@mui/material/Alert";
 import { states, countries, provinces, terms } from "../config";
-import insertNewUser from "./insertNewUser";
+import { insertNewUser, isEmailAlreadyInDB } from "./insertNewUser";
 import insertErrorLog from "../functions/insertErrors";
 import zxcvbn from "zxcvbn";
 import { Select } from "antd";
@@ -95,7 +95,28 @@ const Register = () => {
   const [isEmailExisted, setIsEmailExisted] = useState(true);
   const [email, setEmail] = useState("")
 
+  useEffect(() => {
+    // debouncedCheckEmailExistence()
+    const timeout = setTimeout(() => {
+      checkEmail()
+    }, 300);
 
+    return () => {
+      clearTimeout(timeout);
+    }
+  }, [email])
+
+  const checkEmail = async () => {
+    console.log("Email Checking...")
+    console.log("Email Value ", email)
+    let isEmailInDB = await isEmailAlreadyInDB(email);
+    console.log("Email Status in DB ", isEmailInDB)
+    if (isEmailInDB) {
+      setIsEmailExisted(true)
+    }
+  }
+
+  // const debouncedCheckEmailExistence = debounce(checkEmail, 1000);
 
   const handleCountryChange = (event) => {
     const selectedCountry = event.target.value;
@@ -385,7 +406,7 @@ const Register = () => {
                                     />
                                   )}
                                 />
-                                <p style={{marginTop:"5px"}}>Password Strength: {getPasswordStrength()}</p>
+                                <p style={{ marginTop: "5px" }}>Password Strength: {getPasswordStrength()}</p>
                               </StyledControllerContainer>
 
                             </div>
@@ -433,7 +454,7 @@ const Register = () => {
                           <div className="col-lg-12">
                             <div className="mar-15">
                               <StyledControllerContainer>
-                              <label className="label-contact">Address</label>
+                                <label className="label-contact">Address</label>
                                 <Controller
                                   name="address"
                                   control={control}
@@ -577,7 +598,7 @@ const Register = () => {
                                   rules={{ required: "Country is required" }}
                                   render={({ field }) => (
                                     <TextField
-                                      
+
                                       variant="outlined"
                                       style={{ width: "25rem" }}
                                       error={Boolean(errors.country)}
@@ -617,7 +638,7 @@ const Register = () => {
                             <div className="mar-15">
 
                               <StyledControllerContainer>
-                              <label className="label-contact">Phone</label>
+                                <label className="label-contact">Phone</label>
                                 <Controller
                                   name="phone"
                                   control={control}
@@ -783,13 +804,13 @@ const Register = () => {
                             </div>
                           </div>
                         </div>
-                        
+
 
 
                         <div className="row">
                           <div className="col-lg-12">
                             <div className="mar-15-0 sero-rad">
-                              
+
                               <StyledControllerContainer
                                 onMouseEnter={() => setShowConditionsDropdown(true)}
                                 onMouseLeave={() => setShowConditionsDropdown(false)}
@@ -849,19 +870,19 @@ const Register = () => {
                             </div>
                           </div>
                         </div>
-                      
-                        
-                        
-
-                        
 
 
-                        
 
 
-                      
 
-                        
+
+
+
+
+
+
+
+
 
 
 

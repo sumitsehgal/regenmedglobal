@@ -1,5 +1,11 @@
-export const SUPABASE_URL = 'https://sxjdyfdpdhepsgzhzhak.supabase.co';
-export const SUPABASE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN4amR5ZmRwZGhlcHNnemh6aGFrIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY4ODc1MDE2NiwiZXhwIjoyMDA0MzI2MTY2fQ.2_rrSgYe0ncUmBlRZAKiHN_q22RsqqNXsjamTRVujz8';
+// export const SUPABASE_URL = 'https://sxjdyfdpdhepsgzhzhak.supabase.co';
+// export const SUPABASE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN4amR5ZmRwZGhlcHNnemh6aGFrIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY4ODc1MDE2NiwiZXhwIjoyMDA0MzI2MTY2fQ.2_rrSgYe0ncUmBlRZAKiHN_q22RsqqNXsjamTRVujz8';
+
+export const SUPABASE_URL = 'https://blbguopkwtqcircgghnn.supabase.co';
+export const SUPABASE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsYmd1b3Brd3RxY2lyY2dnaG5uIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTUyNDM4MzMsImV4cCI6MjAxMDgxOTgzM30.1DQ9whF3nwYIHgyVAHdd_LIih8jI5KrKiWmSyJMdiww';
+
+export const SCHEMA_NAME = "regendb";
+
 export const GOOGLE_MAPS_API_KEY = 'AIzaSyBsY7TWsifdD_oYfwhEKBqVdLzfBaSeu6A';
 export const EMAILJS_SERVICE_ID = 'service_2r0se76';
 export const EMAILJS_API_KEY = 'qVS-rHwiDSnK_KcU9';
