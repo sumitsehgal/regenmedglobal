@@ -1805,7 +1805,27 @@ ul.banner-ul span.ant-select-selection-placeholder {
   word-break: break-all;
   font-size: 12px;
 }
+.form-all.register-form.code-validater-only {
+  background: #f6f6f6 !important;
+}
 
+.form-all.register-form.code-validater-only input[type="text"] {
+  background: white !important;
+}
+strong.green {
+  color: green;
+  text-align: left;
+  display: block;
+}
+
+p.red-error {
+  color: #ff0606;
+  text-align: left;
+  display: block;
+}
+.form-all.register-form.code-validater-only .sc-cyDWtN.cbTWhx {
+  background: #f6f6f6 !important;
+}
 
 
 

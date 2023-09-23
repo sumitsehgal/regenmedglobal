@@ -105,6 +105,30 @@ const geocodeCity = async (city, state, country) => {
 //   }
 // };
 
+export const resetPassword = async(data, id) => {
+  try {
+    console.log("Entered")
+    console.log(data)
+    console.log(id)
+    // Generate a random salt for password hashing
+    const salt = generateSalt();
+
+    // Hash the password
+    const hashedPassword = await hashPassword(data.password, salt);
+
+    const { error } = await supabase
+                          .from('maindata')
+                          .update({ password: hashedPassword, password_salt: salt })
+                          .eq('id', id);
+    
+    return true;
+
+  }catch(e) {
+    console.log("Error ", e)
+  }
+  return false
+}
+
 export const insertNewUser = async (userData) => {
   try {
     const {

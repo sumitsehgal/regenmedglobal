@@ -407,7 +407,7 @@ const Register = () => {
 
                     {isValidEmail && isEmailInDB && 
                     (<div className="another-div">
-                      <p className="claim-p">Email already exists. You can claim email.</p>
+                      <p className="claim-p">An account was found with the above email, please click below to claim your profile</p>
                       <button type="button" onClick={claimEmail} className="Send-message">Claim Email</button>
                     </div>)}
 

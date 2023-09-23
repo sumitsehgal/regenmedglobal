@@ -44,6 +44,7 @@ function App() {
         setClassName("page-contact");
         break;
       case "/results":
+      case "/CodeValidator":
         setClassName("page-results");
         break;
       default:
